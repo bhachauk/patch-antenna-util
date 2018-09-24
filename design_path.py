@@ -1,7 +1,7 @@
 import os
 import sys
 
-scriptpath = "/home/bhanuchander/Desktop/patch.py"
+scriptpath = "patch.py"
 
 sys.path.append(os.path.abspath(scriptpath))
 
