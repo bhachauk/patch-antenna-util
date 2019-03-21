@@ -2,7 +2,10 @@ import math
 import matplotlib.pyplot as plt
 import numpy as np
 from math import cos, sin, sqrt, atan2, acos, pi, log10
-from mpl_toolkits.mplot3d import Axes3D
+import plotly
+from plotly.offline import init_notebook_mode
+import plotly.graph_objs as go
+plotly.offline.init_notebook_mode(connected=True)
 import scipy.integrate
 
 
@@ -150,9 +153,6 @@ def SurfacePlot(Fields, Freq, W, L, h, Er):
 
     print("Processing SurfacePlot...")
 
-    fig = plt.figure()
-    ax = fig.add_subplot(111, projection='3d')
-
     phiSize = Fields.shape[0]                                                                                   # Finds the phi & theta range
     thetaSize = Fields.shape[1]
 
@@ -169,12 +169,36 @@ def SurfacePlot(Fields, Freq, W, L, h, Er):
             X[phi, theta] = xe                                                                                  # Store cartesian coordinates
             Y[phi, theta] = ye
             Z[phi, theta] = ze
+    print X                                                                        # Plot surface
+    # surface = go.Surface(x=X, y=Y, z=Z)
+    # data = [surface]
 
-    ax.plot_surface(X, Y, Z, color='b')                                                                         # Plot surface
-    plt.ylabel('Y')
-    plt.xlabel('X')                                                                                             # Plot formatting
-    plt.title("Surface Plot for EH Plane")
-    plt.show()
+    # layout = go.Layout(
+    #     title='Surface Plot of EH Plane',
+    #     scene=dict(
+    #         xaxis=dict(
+    #             gridcolor='rgb(255, 255, 255)',
+    #             zerolinecolor='rgb(255, 255, 255)',
+    #             showbackground=True,
+    #             backgroundcolor='rgb(230, 230,230)'
+    #         ),
+    #         yaxis=dict(
+    #             gridcolor='rgb(255, 255, 255)',
+    #             zerolinecolor='rgb(255, 255, 255)',
+    #             showbackground=True,
+    #             backgroundcolor='rgb(230, 230,230)'
+    #         ),
+    #         zaxis=dict(
+    #             gridcolor='rgb(255, 255, 255)',
+    #             zerolinecolor='rgb(255, 255, 255)',
+    #             showbackground=True,
+    #             backgroundcolor='rgb(230, 230,230)'
+    #         )
+    #     )
+    # )
+
+    # fig = go.Figure(data=data, layout=layout)
+    # plotly.offline.plot(fig)
 
 
 def DesignPatch(Er, h, Freq):
