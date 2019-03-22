@@ -168,37 +168,36 @@ def SurfacePlot(Fields, Freq, W, L, h, Er):
 
             X[phi, theta] = xe                                                                                  # Store cartesian coordinates
             Y[phi, theta] = ye
-            Z[phi, theta] = ze
-    print X                                                                        # Plot surface
-    # surface = go.Surface(x=X, y=Y, z=Z)
-    # data = [surface]
+            Z[phi, theta] = ze                                                                        # Plot surface
+    surface = go.Surface(x=X, y=Y, z=Z)
+    data = [surface]
 
-    # layout = go.Layout(
-    #     title='Surface Plot of EH Plane',
-    #     scene=dict(
-    #         xaxis=dict(
-    #             gridcolor='rgb(255, 255, 255)',
-    #             zerolinecolor='rgb(255, 255, 255)',
-    #             showbackground=True,
-    #             backgroundcolor='rgb(230, 230,230)'
-    #         ),
-    #         yaxis=dict(
-    #             gridcolor='rgb(255, 255, 255)',
-    #             zerolinecolor='rgb(255, 255, 255)',
-    #             showbackground=True,
-    #             backgroundcolor='rgb(230, 230,230)'
-    #         ),
-    #         zaxis=dict(
-    #             gridcolor='rgb(255, 255, 255)',
-    #             zerolinecolor='rgb(255, 255, 255)',
-    #             showbackground=True,
-    #             backgroundcolor='rgb(230, 230,230)'
-    #         )
-    #     )
-    # )
+    layout = go.Layout(
+        title='Surface Plot of EH Plane',
+        scene=dict(
+            xaxis=dict(
+                gridcolor='rgb(255, 255, 255)',
+                zerolinecolor='rgb(255, 255, 255)',
+                showbackground=True,
+                backgroundcolor='rgb(230, 230,230)'
+            ),
+            yaxis=dict(
+                gridcolor='rgb(255, 255, 255)',
+                zerolinecolor='rgb(255, 255, 255)',
+                showbackground=True,
+                backgroundcolor='rgb(230, 230,230)'
+            ),
+            zaxis=dict(
+                gridcolor='rgb(255, 255, 255)',
+                zerolinecolor='rgb(255, 255, 255)',
+                showbackground=True,
+                backgroundcolor='rgb(230, 230,230)'
+            )
+        )
+    )
 
-    # fig = go.Figure(data=data, layout=layout)
-    # plotly.offline.plot(fig)
+    fig = go.Figure(data=data, layout=layout)
+    plotly.offline.plot(fig)
 
 
 def DesignPatch(Er, h, Freq):
