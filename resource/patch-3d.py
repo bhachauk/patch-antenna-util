@@ -12,14 +12,20 @@ plotly.offline.init_notebook_mode(connected=True)
 
 intensity = [0, 0.142857142857143, 0.285714285714286, 0.428571428571429, 0.571428571428571, 0.714285714285714, 0.85714257142857, 1] 
 
-i = [7, 0, 0, 0, 4, 4, 6, 6, 4, 0, 3, 2]
-j = [3, 4, 1, 2, 5, 6, 5, 2, 0, 1, 6, 3]
-k = [0, 7, 2, 3, 6, 7, 1, 1, 5, 5, 7, 6]
+i = [7, 0, 0, 0, 4, 4, 2, 6, 4, 0, 3, 7]
+j = [3, 4, 1, 2, 5, 6, 5, 5, 0, 1, 2, 2]
+k = [0, 7, 2, 3, 6, 7, 1, 2, 5, 5, 7, 6]
 
 
-cavitycolor = [[0, 'rgb(0, 100, 0)'], [0.5, 'rgb(0, 100, 0)'], [1, 'rgb(0, 100, 0)']]
+cavitycolor = [[0, 'rgb(0, 100, 0)']*6]
 
-coppercolor = [[0, 'rgb(139, 69, 19)'], [0.5, 'rgb(139, 69, 19)'], [1, 'rgb(77, 77, 77)']]
+coppercolor = [[0, 'rgb(139, 69, 19)'],
+               [1, 'rgb(139, 69, 19)'],
+               [2, 'rgb(139, 69, 19)'],
+               [3, 'rgb(139, 69, 19)'],
+               [4, 'rgb(139, 69, 19)'],
+               [5, 'rgb(139, 69, 19)'],
+               ]
 
 ct = 0.05 # copper_thickness
 pl = float(5) # patch length
@@ -43,7 +49,7 @@ data = [
         colorbar = go.ColorBar(
             title='ground'
         ),
-        colorscale = coppercolor,
+        facecolor = coppercolor,
         intensity = intensity,
         i = i,
         j = j,
@@ -58,7 +64,7 @@ data = [
         colorbar = go.ColorBar(
             title='patch_top'
         ),
-        colorscale = coppercolor,
+        facecolor = coppercolor,
         intensity = intensity,
         i = i,
         j = j,
@@ -73,8 +79,7 @@ data = [
         colorbar = go.ColorBar(
             title='feeder_top'
         ),
-        colorscale= coppercolor,
-        intensity = intensity,
+        facecolor= coppercolor,
         i = i,
         j = j,
         k = k,
@@ -88,7 +93,7 @@ data = [
         colorbar = go.ColorBar(
             title='cavity'
         ),
-        colorscale = cavitycolor,
+        facecolor = cavitycolor,
         intensity = intensity,
         i = i,
         j = j,
