@@ -28,6 +28,10 @@ input{
    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
     -moz-box-sizing: border-box;    /* Firefox, other Gecko */
     box-sizing: border-box;
+    border: 0;
+    outline: 0;
+    background: transparent;
+    border-bottom: 1px solid #323;
 }
 
 .btn{
@@ -56,4 +60,79 @@ input{
     transform: translateY(1px);
     box-shadow: 0 0 2px rgba(0, 0, 0, 0.35);
     border-bottom: none;
+}
+
+#totalContainer{
+    margin-left: 5%;
+    margin-right: 5%;
+    display: none;
+}
+
+.btnContainer{
+     padding: 2%;
+     display: block;
+     width: auto;
+     text-align:center;
+     background: #323;
+ }
+
+.currentBtn, .currentBtn:hover{
+    background: #195;
+    color: white;
+}
+
+.cmnBtn, .currentBtn {
+    width: 10%;
+    padding: 10px;
+    align: center;
+    border: solid 2px #333;
+    cursor: pointer;
+    display: inline-block;
+}
+
+.cmnBtn:hover{
+    background: #ff1;
+}
+
+.show{
+    display: none;
+}
+
+i{
+  border-radius: 60px;
+  padding: 0.4em 0.4em;
+  vertical-align: middle;
+  background: red;
+  position: relative;
+  top: -25px;
+  align: center;
+  display: block;
+}
+
+i:hover{
+    background: green;
+    cursor: pointer;
+   box-shadow: 0px 0px 3px 1px;
+}
+
+header{
+    display: block;
+    text-align: center;
+    border-width: 0px 0px 1px 0px;
+    border-style: solid;
+    border-color: #323;
+    height: auto;
+    color: #323;
+    width: 100%;
+}
+
+.simRes{
+    align: center;
+    min-height: 25px;
+    text-align: center;
+    margin-left: 40%;
+    margin-right: 40%;
+    border: 1px solid #99f;
+    border-radius: 8px;
+    padding: 15px;
 }

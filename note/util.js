@@ -24,4 +24,5 @@ function makeDisplayId (id, disType)
 function simulate()
 {
     makeDisplayId('totalContainer','block');
+    putChart();
 }

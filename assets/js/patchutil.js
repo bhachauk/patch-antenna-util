@@ -13,7 +13,7 @@ copperface = getFacecolor(coppercolor);
 
 var pw, pl, fl, fw, ch, tl, tfp, bfp, gl, gw, ele_l, effl, effd, dispMap;
 
-var ct= 0.03556
+var ct= 0.03556;
 
 
 function updateParams() {
@@ -56,7 +56,7 @@ function calculate(){
     console.log("Got the frequency            : ",  cavity)
 
      if (! (freq && diel && cavity)){
-        alert("Some values not entered");
+        simFailure();
         return false;
     }
 
@@ -96,7 +96,20 @@ function calculate(){
     fl = feed_l * Math.pow(10, 3)
     fw = feed_w * Math.pow(10, 3)
     updateParams()
+    simSuccess()
     return true;
+}
+
+function simFailure()
+{
+    document.getElementById('simres').innerHTML = 'Some values Not entered ...';
+    document.getElementById('simres').style.color = 'Red';
+}
+
+function simSuccess()
+{
+     document.getElementById('simres').innerHTML = 'Success';
+     document.getElementById('simres').style.color = 'Green';
 }
 
 function getArray (v, n) {
@@ -119,6 +132,7 @@ function getFacecolor(facecolor){
 
 function putChart() {
 
+    makeDisplayId('totalContainer','none');
     var isvalid = calculate()
     if (!isvalid){
         return
@@ -141,7 +155,6 @@ function putChart() {
     var feeder = Object.assign({ x: feederPts[0], y: feederPts[1], z: feederPts[2], name: 'feeder' }, copperInit)
 
     var data = [ ground, cavity, patch, feeder];
-    console.log(data)
 
     var plt_r = tl * 1.2
     var layout = {
@@ -164,8 +177,9 @@ function putChart() {
             }
         }
     }
-
-    Plotly.plot("plotd", data, layout, {showSendToCloud: true});
+    makeDisplayId('totalContainer','block');
+    console.log(data)
+    Plotly.newPlot('plotd', data, layout, {});
 }
 
 
@@ -199,4 +213,27 @@ function getFeederPoints (tl, pl, tfp, bfp,ch, ct)
     var y = [ bfp, tfp, tfp, bfp, bfp, tfp, tfp, bfp]
     var z = [ ch, ch, ch, ch, (ch + ct), (ch + ct), (ch + ct), (ch + ct)]
     return [x,y,z]
+}
+
+function toggle(evt, id) {
+    makeDisplay ('show', 'none')
+    x = document.getElementsByClassName('currentBtn');
+    for (i = 0; i < x.length; i++) {
+        x[i].className = x[i].className.replace("currentBtn", "cmnBtn");
+    }
+    evt.currentTarget.className = "currentBtn";
+    makeDisplayId(id, 'block');
+}
+
+function makeDisplay (className, disType)
+{
+    var list = document.getElementsByClassName(className);
+     for (i = 0; i < list.length; i++) {
+       list[i].style.display = disType;
+     }
+}
+
+function makeDisplayId (id, disType)
+{
+    document.getElementById (id).style.display = disType;
 }

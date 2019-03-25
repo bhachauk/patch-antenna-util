@@ -5,10 +5,12 @@
     <title>Patch Antenna design simulation</title>
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="/assets/js/patchutil.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="/assets/sass/style.css"/>
 </head>
 <body>
+<header>
 <div align="center">
 <h1 >Patch Antenna Design and Simulation</h1>
 <form>
@@ -25,22 +27,43 @@
       <input type="number" id="c_in" min="0.5" max="5" step="0.001" placeholder="millimeter">
     </div>
 </form>
-    <br>
-    <a href="#" class="btn" onclick="putChart()">BUTTON</a>
 </div>
-<br><br>
-    <div class="param active">
-    <pre id="pw"></pre>
-    <pre id="pl"></pre>
-    <pre id="fw"></pre>
-    <pre id="fl"></pre>
-    <pre id="effl"></pre>
-    <pre id="ele_l"></pre>
-    <pre id="effd"></pre>
-    <pre id="gl"></pre>
-    <pre id="gw"></pre>
-    <br>
-    <div id="plotd" class="plot"></div>
+    <br><br>
+</header>
+<div align="center">
+    <i class="material-icons" onclick="putChart()">settings</i>
+</div>
+
+<div id="simres" class="simRes"></div>
+
+<div id="totalContainer">
+    <p align="right">beta</p>
+    <div class="btnContainer">
+        <button onclick="toggle(event,'param')" class="currentBtn">Parameters</button>
+        <button onclick="toggle(event,'plot')" class="cmnBtn">3D Plot</button>
+        <button onclick="toggle(event,'note')" class="cmnBtn">Note</button>
+    </div>
+    <div id="resultContainer">
+        <div id="param" class="show" style="display:block;">
+        <div class="param active">
+        <pre id="pw"></pre>
+        <pre id="pl"></pre>
+        <pre id="fw"></pre>
+        <pre id="fl"></pre>
+        <pre id="effl"></pre>
+        <pre id="ele_l"></pre>
+        <pre id="effd"></pre>
+        <pre id="gl"></pre>
+        <pre id="gw"></pre>
+            <br></div>
+        </div>
+        <div id="plot" class="show">
+            <div id="plotd" class="plot" align="center"></div>
+        </div>
+        <div id="note" class="show">
+            <h1 align="center">Note will be here</h1>
+        </div>
+    </div>
 </div>
 </body>
 </html>
