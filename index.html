@@ -10,58 +10,76 @@
     <link rel="stylesheet" type="text/css" href="/assets/sass/style.css"/>
 </head>
 <body>
-<header>
-<div align="center">
-<h1 >Patch Antenna Design and Simulation</h1>
-<form>
-    <div class="inputblock">
-        <h4>Frequency in GHz</h4>
-        <input type="number" id="f_in" min="1" max="10" step="0.001" aria-label="hi" placeholder="GHz">
-    </div>
-    <div class="inputblock">
-        <h4>Dilectric Constant</h4>
-        <input type="number" id="d_in" min="0.1" max="10" step="0.001" placeholder="Ratio">
-    </div>
-    <div class="inputblock">
-        <h4>Cavity Height in mm</h4>
-      <input type="number" id="c_in" min="0.5" max="5" step="0.001" placeholder="millimeter">
-    </div>
-</form>
-</div>
-    <br><br>
-</header>
-<div align="center">
-    <i class="material-icons" onclick="putChart()">settings</i>
-</div>
-
-<div id="simres" class="simRes"></div>
-
 <div id="totalContainer">
-    <p align="right">beta</p>
+    <!--<span id="simres" style="padding: 10px"></span>-->
+    <div align="center" class="header">
+        <form>
+            <div class="inputblock" align="left">
+                <h3> Patch Antenna
+                    <br>Design
+                    <br>Simulation</h3>
+            </div>
+            <div class="inputblock">
+                <h4>Frequency in GHz</h4>
+                <input type="number" id="f_in" min="1" max="10" step="0.001" placeholder="GHz">
+            </div>
+            <div class="inputblock">
+                <h4>Dilectric Constant</h4>
+                <input type="number" id="d_in" min="0.1" max="10" step="0.001" placeholder="Ratio">
+            </div>
+            <div class="inputblock">
+                <h4>Cavity Height in mm</h4>
+              <input type="number" id="c_in" min="0.5" max="5" step="0.001" placeholder="millimeter">
+            </div>
+        </form>
+    </div>
     <div class="btnContainer">
-        <button onclick="toggle(event,'param')" class="currentBtn">Parameters</button>
-        <button onclick="toggle(event,'plot')" class="cmnBtn">3D Plot</button>
-        <button onclick="toggle(event,'note')" class="cmnBtn">Note</button>
+        <i class="material-icons" onclick="putChart()" style="margin-right: 10%;">settings</i>
+        <i onclick="toggle(event,'help')" class="currentBtn material-icons">help</i>
+        <i onclick="toggle(event,'param')" class="cmnBtn material-icons">subject</i>
+        <i onclick="toggle(event,'plot')" class="cmnBtn material-icons">3d_rotation</i>
+        <i onclick="toggle(event,'note')" class="cmnBtn material-icons">info</i>
     </div>
     <div id="resultContainer">
-        <div id="param" class="show" style="display:block;">
-        <div class="param active">
-        <pre id="pw"></pre>
-        <pre id="pl"></pre>
-        <pre id="fw"></pre>
-        <pre id="fl"></pre>
-        <pre id="effl"></pre>
-        <pre id="ele_l"></pre>
-        <pre id="effd"></pre>
-        <pre id="gl"></pre>
-        <pre id="gw"></pre>
-            <br></div>
+        <div id="help" class="show" style="display: inline-block;">
+            <div style="align:center;display:block;">
+            <table>
+                <tr>
+                    <td><i class="material-icons normal">settings</i></td>
+                    <td><p style="color: coral;"> Simulate</p></td>
+                </tr>
+                <tr>
+                    <td><i class="material-icons normal">subject</i></td>
+                    <td><p style="color: coral;">Parameters of the cal</p></td>
+                </tr>
+                <tr>
+                    <td><i class="material-icons normal">3d_rotation</i></td>
+                    <td><p style="color: coral;"> 3d view of the patch</p></td>
+                </tr>
+                <tr>
+                    <td><i class="material-icons normal">info</i></td>
+                    <td><p style="color: coral;">Equations</p></td>
+                </tr>
+            </table></div>
+        </div>
+            <div id="param" class="show">
+                <div align="center;">
+                <pre id="pw"></pre>
+                <pre id="pl"></pre>
+                <pre id="fw"></pre>
+                <pre id="fl"></pre>
+                <pre id="effl"></pre>
+                <pre id="ele_l"></pre>
+                <pre id="effd"></pre>
+                <pre id="gl"></pre>
+                <pre id="gw"></pre>
+            </div>
         </div>
         <div id="plot" class="show">
             <div id="plotd" class="plot" align="center"></div>
         </div>
         <div id="note" class="show">
-            <h1 align="center">Note will be here</h1>
+            <h4 align="center">Under Development</h4>
         </div>
     </div>
 </div>

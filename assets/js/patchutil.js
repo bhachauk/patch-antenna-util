@@ -1,8 +1,8 @@
 // All values are in mm.
 // init area
-var i = [7, 0, 0, 0, 4, 4, 6, 6, 4, 0, 3, 2]
-var j = [3, 4, 1, 2, 5, 6, 5, 2, 0, 1, 6, 3]
-var k = [0, 7, 2, 3, 6, 7, 1, 1, 5, 5, 7, 6]
+var axis_i = [7, 0, 0, 0, 4, 4, 6, 6, 4, 0, 3, 2]
+var axis_j = [3, 4, 1, 2, 5, 6, 5, 2, 0, 1, 6, 3]
+var axis_k = [0, 7, 2, 3, 6, 7, 1, 1, 5, 5, 7, 6]
 
 cavitycolor = getArray ('rgb(0, 100, 0)', 6)
 coppercolor = getArray ('rgb(255, 140, 0)', 6)
@@ -47,9 +47,9 @@ function setValue(id, val)
 }
 
 function calculate(){
-    var freq =  document.getElementById('f_in').value;
-    var diel =  document.getElementById('d_in').value;
-    var cavity =  document.getElementById('c_in').value;
+    var freq =  parseFloat (document.getElementById('f_in').value);
+    var diel =  parseFloat (document.getElementById('d_in').value);
+    var cavity =  parseFloat (document.getElementById('c_in').value);
 
     console.log("Got the frequency           : ",  freq)
     console.log("Got the dielectric constant : ",  diel)
@@ -96,7 +96,7 @@ function calculate(){
     fl = feed_l * Math.pow(10, 3)
     fw = feed_w * Math.pow(10, 3)
     updateParams()
-    simSuccess()
+    //simSuccess()
     return true;
 }
 
@@ -132,14 +132,13 @@ function getFacecolor(facecolor){
 
 function putChart() {
 
-    makeDisplayId('totalContainer','none');
     var isvalid = calculate()
     if (!isvalid){
         return
     }
 
     var type = "mesh3d"
-    var init =  { i: i, j: j, k: k, type: "mesh3d"}
+    var init =  { i: axis_i, j: axis_j, k: axis_k, type: "mesh3d"}
     var copperInit = Object.assign({}, init, {facecolor: copperface})
 
     var groundPts = getGroundPoints(tl, pw, ct)
@@ -158,6 +157,9 @@ function putChart() {
 
     var plt_r = tl * 1.2
     var layout = {
+
+    plot_bgcolor:"#444",
+    paper_bgcolor:"#444",
 	scene: {
             xaxis:{title: 'Length'},
             yaxis:{title: 'Width'},
@@ -177,8 +179,6 @@ function putChart() {
             }
         }
     }
-    makeDisplayId('totalContainer','block');
-    console.log(data)
     Plotly.newPlot('plotd', data, layout, {});
 }
 
@@ -221,7 +221,8 @@ function toggle(evt, id) {
     for (i = 0; i < x.length; i++) {
         x[i].className = x[i].className.replace("currentBtn", "cmnBtn");
     }
-    evt.currentTarget.className = "currentBtn";
+    var t = evt.currentTarget
+    t.className = t.className.replace("cmnBtn", "currentBtn");
     makeDisplayId(id, 'block');
 }
 
