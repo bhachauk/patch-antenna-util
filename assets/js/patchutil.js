@@ -180,6 +180,7 @@ function putChart() {
         }
     }
     Plotly.newPlot('plotd', data, layout, {});
+    document.getElementById('param_btn').click();
 }
 
 

@@ -34,18 +34,18 @@
         </form>
     </div>
     <div class="btnContainer">
-        <i class="material-icons" onclick="putChart()" style="margin-right: 10%;">settings</i>
-        <i onclick="toggle(event,'help')" class="currentBtn material-icons">help</i>
-        <i onclick="toggle(event,'param')" class="cmnBtn material-icons">subject</i>
+        <i class="material-icons" onclick="putChart()" style="margin-right: 10%;">play_arrow</i>
+        <i id="param_btn" onclick="toggle(event,'param')" class="cmnBtn material-icons">subject</i>
         <i onclick="toggle(event,'plot')" class="cmnBtn material-icons">3d_rotation</i>
         <i onclick="toggle(event,'note')" class="cmnBtn material-icons">info</i>
+        <i onclick="toggle(event,'help')" class="currentBtn material-icons" style="margin-left: 10%;">help</i>
     </div>
     <div id="resultContainer">
         <div id="help" class="show" style="display: inline-block;">
             <div style="align:center;display:block;">
             <table>
                 <tr>
-                    <td><i class="material-icons normal">settings</i></td>
+                    <td><i class="material-icons normal">play_arrow</i></td>
                     <td><p style="color: coral;"> Simulate</p></td>
                 </tr>
                 <tr>
@@ -62,8 +62,8 @@
                 </tr>
             </table></div>
         </div>
+        <div style="margin-left: 25%;">
             <div id="param" class="show">
-                <div align="center;">
                 <pre id="pw"></pre>
                 <pre id="pl"></pre>
                 <pre id="fw"></pre>
