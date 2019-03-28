@@ -157,3 +157,13 @@ body{
     background: -webkit-linear-gradient(to right, #753a88, #cc2b5e);  /* Chrome 10-25, Safari 5.1-6 */
     background: linear-gradient(to right, #753a88, #cc2b5e); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+select{
+  width: 15%;
+  background: #444;
+  color: coral;
+  border: 1px solid coral;
+  outline:0px ;
+  padding: 2px; 
+  border-radius: 4px;
+}
