@@ -4,8 +4,13 @@ var axis_i = [7, 0, 0, 0, 4, 4, 6, 6, 4, 0, 3, 2]
 var axis_j = [3, 4, 1, 2, 5, 6, 5, 2, 0, 1, 6, 3]
 var axis_k = [0, 7, 2, 3, 6, 7, 1, 1, 5, 5, 7, 6]
 
+var ct= 0.03556;
+var options = [ { cond: "Copper", col: "rgb(255, 140, 0)"}, 
+                { cond: "Silver", col: "rgb(192, 192, 192)"}, 
+                { cond: "Gold",   col: "rgb(255, 255, 0)"}];
+
 cavitycolor = getArray ('rgb(0, 100, 0)', 6)
-coppercolor = getArray ('rgb(255, 140, 0)', 6)
+coppercolor = getArray (options.Copper, 6)
 
 cavityface = getFacecolor(cavitycolor);
 copperface = getFacecolor(coppercolor);
@@ -13,7 +18,32 @@ copperface = getFacecolor(coppercolor);
 
 var pw, pl, fl, fw, ch, tl, tfp, bfp, gl, gw, ele_l, effl, effd, dispMap;
 
-var ct= 0.03556;
+
+function getConductorElement(){
+    return document.getElementById("selectConductor");
+}
+
+function beReady(){
+    var select = getConductorElement()
+    while(select.firstChild){
+        select.removeChild(select.firstChild);
+    }
+    for ( var obj in options){
+        var el = document.createElement("option");
+        el.textContent = options[obj].key;
+        el.value = key;
+        select.add(el);
+    })
+}
+
+function save(){
+    var val = getConductorElement().value;
+    var x = options[val]
+    delete options[val];
+    options[val]=x;
+    coppercolor = getArray(options[getConductorElement().value], 6)
+    copperface = getFacecolor(coppercolor);
+}
 
 
 function updateParams() {
@@ -56,7 +86,7 @@ function calculate(){
     console.log("Got the frequency            : ",  cavity)
 
      if (! (freq && diel && cavity)){
-        simFailure();
+        //simFailure();
         return false;
     }
 
