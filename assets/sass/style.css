@@ -106,6 +106,9 @@ td{
 
 .show{
     display: none;
+    pre, h4 {
+        color: coral;
+    }
 }
 
 i{
@@ -147,7 +150,7 @@ i:hover{
     padding-bottom: 1%;
 }
 
-#help, #param
+#help, #param, #info
 {
     margin: 10%;
 }
@@ -166,4 +169,12 @@ select{
   outline:0px ;
   padding: 2px; 
   border-radius: 4px;
+}
+
+.settings{
+        color: coral;
+}
+
+.saveBtn{
+    margin: 10%;
 }
