@@ -6,8 +6,8 @@
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
     <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-    <script src="/assets/js/patchutil.js" type="text/javascript"></script>
-    <link rel="stylesheet" type="text/css" href="/assets/sass/style.css"/>
+    <script src="G:\patch-antenna-master\assets\js\patchutil.js" type="text/javascript"></script>
+    <link rel="stylesheet" type="text/css" href="G:\patch-antenna-master\assets\sass\style.css"/>
 </head>
 <body>
 <div id="totalContainer">
@@ -38,7 +38,8 @@
         <i id="param_btn" onclick="toggle(event,'param')" class="cmnBtn material-icons">subject</i>
         <i onclick="toggle(event,'plot')" class="cmnBtn material-icons">3d_rotation</i>
         <i onclick="toggle(event,'note')" class="cmnBtn material-icons">info</i>
-        <i onclick="toggle(event,'help')" class="currentBtn material-icons" style="margin-left: 10%;">help</i>
+        <i onclick="toggle(event,'settings');beReady()" class="cmnBtn material-icons" style="margin-left: 10%;">settings</i>
+        <i onclick="toggle(event,'help')" class="currentBtn material-icons">help</i>
     </div>
     <div id="resultContainer">
         <div id="help" class="show" style="display: inline-block;">
@@ -77,6 +78,14 @@
         </div>
         <div id="plot" class="show">
             <div id="plotd" class="plot" align="center"></div>
+        </div>
+        <div id="settings" class="show" align="center">
+            <h4>Under Development</h4>
+                <select id="selectConductor"></select>
+                <div class="inputblock">
+                <h4>Conductor Thickness in mm</h4>
+                <input type="number" id="c_in" min="0.020" max="0.10" step="0.001" placeholder="0.03535 mm"></div>
+                <i class="material-icons" onclick="save()">save</i>
         </div>
         <div id="note" class="show">
             <h4 align="center">Under Development</h4>
