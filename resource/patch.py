@@ -13,7 +13,6 @@ def sph2cart1(r, th, phi):
   x = r * cos(phi) * sin(th)
   y = r * sin(phi) * sin(th)
   z = r * cos(th)
- 
   return x, y, z
    
 def cart2sph1(x, y, z):
@@ -37,11 +36,12 @@ def PatchFunction(thetaInDeg, phiInDeg, Freq, W, L, h, Er):
     Refrence C.A. Balanis 2nd Edition Page 745
     """
     lamba = 3e8 / Freq
-
+    print 'lambda ' + str(lamba)
     theta_in = math.radians(thetaInDeg)
     phi_in = math.radians(phiInDeg)
 
     ko = 2 * math.pi / lamba
+    print 'ko ' + str(ko)
 
     xff, yff, zff = sph2cart1(999, theta_in, phi_in)                            # Rotate coords 90 deg about x-axis to match array_utils coord system with coord system used in the model.
     xffd = zff
@@ -196,8 +196,8 @@ def SurfacePlot(Fields, Freq, W, L, h, Er):
         )
     )
 
-    fig = go.Figure(data=data, layout=layout)
-    plotly.offline.plot(fig)
+    # fig = go.Figure(data=data, layout=layout)
+    # plotly.offline.plot(fig)
 
 
 def DesignPatch(Er, h, Freq):

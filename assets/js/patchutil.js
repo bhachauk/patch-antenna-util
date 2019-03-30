@@ -17,7 +17,7 @@ cavityface = getFacecolor(cavitycolor);
 copperface = getFacecolor(coppercolor);
 
 
-var pw, pl, fl, fw, ch, tl, tfp, bfp, gl, gw, ele_l, effl, effd, dispMap;
+var f, pw, pl, fl, fw, ch, tl, tfp, bfp, gl, gw, ele_l, effl, effd, dispMap;
 
 
 function getConductorElement(){
@@ -105,7 +105,7 @@ function calculate(){
 
     //all value in meter
     var ls = 299792458
-    var f = freq * Math.pow(10, 9);
+    f = freq * Math.pow(10, 9);
     var h = cavity * Math.pow(10, -3);
 
     // patch width
