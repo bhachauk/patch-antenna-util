@@ -10,6 +10,8 @@ for(i=0;i<24;i++)
 }
 
 var data = [{
+           x: z_data,
+           y: z_data,
            z: z_data,
            type: 'surface'
         }];

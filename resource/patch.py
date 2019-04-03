@@ -36,12 +36,10 @@ def PatchFunction(thetaInDeg, phiInDeg, Freq, W, L, h, Er):
     Refrence C.A. Balanis 2nd Edition Page 745
     """
     lamba = 3e8 / Freq
-    print 'lambda ' + str(lamba)
     theta_in = math.radians(thetaInDeg)
     phi_in = math.radians(phiInDeg)
 
     ko = 2 * math.pi / lamba
-    print 'ko ' + str(ko)
 
     xff, yff, zff = sph2cart1(999, theta_in, phi_in)                            # Rotate coords 90 deg about x-axis to match array_utils coord system with coord system used in the model.
     xffd = zff

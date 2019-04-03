@@ -65,6 +65,11 @@ input{
 
 td{
  valign:center;
+ padding-left: 15px;
+}
+
+p{
+    color: coral;
 }
 
 #totalContainer{

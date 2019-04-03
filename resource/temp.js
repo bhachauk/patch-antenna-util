@@ -16,7 +16,7 @@ var er = 4.4
 
 var Fields = GetPatchFields(0, 360, 0, 90)
 
-console.log('fields', Fields)
+//console.log('fields', Fields)
 
 phiSize = 360
 thetaSize = 90
@@ -25,40 +25,42 @@ X = Array(phiSize).fill(Array(thetaSize).fill(1));
 Y = Array(phiSize).fill(Array(thetaSize).fill(1));
 Z = Array(phiSize).fill(Array(thetaSize).fill(1));
 
-for (var phi=0; phi < phiSize; phi++)
+for (var phi_temp =0; phi_temp < phiSize; phi_temp++)
 {
-    for (var theta=0; theta < thetaSize; theta++)
+    for (var theta_temp =0; theta_temp < thetaSize; theta_temp++)
     {
-        var e = Fields[phi][theta]
-        var ax = sph2cart1 (e, toRadians(theta), toRadians(phi))
-        X[phi][theta] = ax[0]
-        Y[phi][theta] = ax[1]
-        Z[phi][theta] = ax[2]
+        var e_temp = Fields[phi_temp][theta_temp]
+        var t_temp = toRadians(theta_temp)
+        var p_temp = toRadians(phi_temp)
+        var ax = sph2cart1 (e_temp, t_temp, p_temp)
+        X[phi_temp][theta_temp] = ax[0]
+        Y[phi_temp][theta_temp] = ax[1]
+        Z[phi_temp][theta_temp] = ax[2]
     }
 }
 
 var layout = {
     title: 'Surface Plot of EH Plane',
-//    scene: {
-//        xaxis: {
-//            gridcolor: 'rgb(255, 255, 255)',
-//            zerolinecolor: 'rgb(255, 255, 255)',
-//            showbackground: true,
-//            backgroundcolor: 'rgb(230, 230,230)'
-//        },
-//        yaxis: {
-//            gridcolor: 'rgb(255, 255, 255)',
-//            zerolinecolor: 'rgb(255, 255, 255)',
-//            showbackground: true,
-//            backgroundcolor: 'rgb(230, 230,230)'
-//        },
-//        zaxis: {
-//            gridcolor: 'rgb(255, 255, 255)',
-//            zerolinecolor: 'rgb(255, 255, 255)',
-//            showbackground: true,
-//            backgroundcolor: 'rgb(230, 230,230)'
-//        }
-//    }
+    scene: {
+        xaxis: {
+            gridcolor: 'rgb(255, 255, 255)',
+            zerolinecolor: 'rgb(255, 255, 255)',
+            showbackground: true,
+            backgroundcolor: 'rgb(230, 230,230)'
+        },
+        yaxis: {
+            gridcolor: 'rgb(255, 255, 255)',
+            zerolinecolor: 'rgb(255, 255, 255)',
+            showbackground: true,
+            backgroundcolor: 'rgb(230, 230,230)'
+        },
+        zaxis: {
+            gridcolor: 'rgb(255, 255, 255)',
+            zerolinecolor: 'rgb(255, 255, 255)',
+            showbackground: true,
+            backgroundcolor: 'rgb(230, 230,230)'
+        }
+    }
 }
 
 var data = [{
@@ -68,9 +70,10 @@ var data = [{
         type: 'surface'
 }]
 
-console.log(data)
-
-Plotly.newPlot('plotd', data=data, {}, {});
+function showPlot(){
+    document.getElementById('plotd').display='block';
+    Plotly.newPlot('plotd', data=data, {}, {});
+}
 
 function GetPatchFields(PhiStart, PhiStop, ThetaStart, ThetaStop)
 
@@ -116,7 +119,7 @@ function PatchFunction (thetaInDeg, phiInDeg){
 
     ff = sph2cart1(999, theta_in, phi_in)
     out = cart2sph1(ff[2], ff[0], ff[1])
-    r = out[0]; phi = out[1]; theta = out[2]
+    r = out[0]; theta = out[1]; phi = out[2];
 
     if (theta == 0)
        theta = Math.pow(10, -9)
