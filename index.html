@@ -8,6 +8,8 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <script src="https://bhanuchander210.github.io/patch-antenna-util/assets/js/patchutil.js" type="text/javascript"></script>
     <link rel="stylesheet" type="text/css" href="https://bhanuchander210.github.io/patch-antenna-util/assets/sass/style.css"/>
+<!--    <script src="assets/js/patchutil.js" type="text/javascript"></script>-->
+<!--    <link rel="stylesheet" type="text/css" href="assets/sass/style.css"/>-->
 </head>
 <body>
 <div id="totalContainer">
@@ -16,8 +18,8 @@
         <form>
             <div class="inputblock" align="left">
                 <h3> Patch Antenna
-                    <br>Design
-                    <br>Simulation</h3>
+                    <br>Online
+                    <br>Calculator and Simulator</h3>
             </div>
             <div class="inputblock">
                 <h4>Frequency in GHz</h4>
@@ -31,6 +33,12 @@
                 <h4>Cavity Height in mm</h4>
               <input type="number" id="c_in" min="0.5" max="5" step="0.001" placeholder="millimeter">
             </div>
+<!--            <div class="inputblock"><h4>Feed type</h4>-->
+<!--                <select id="feed_type" name="feed_type" style="width: 100%;">-->
+<!--                    <option value="normal">normal</option>-->
+<!--                    <option value="inset">inset</option>-->
+<!--                </select>-->
+<!--            </div>-->
         </form>
     </div>
     <div class="btnContainer">
@@ -86,10 +94,18 @@
                 <pre id="effd"></pre>
                 <pre id="gl"></pre>
                 <pre id="gw"></pre>
+                <div id="gerb_1" style="padding-left: 50px; display: none" onclick="download()">
+                    <i class="material-icons normal">save_alt</i>
+                    <p style="color: white">save as gerber</p>
+                </div>
             </div>
         </div>
         <div id="plot" class="show">
             <div id="plotd" class="plot" align="center"></div>
+            <div id="gerb_2" style="text-align: center; display: none" onclick="download()">
+                <i class="material-icons normal">save_alt</i>
+                <p style="color: white">save as gerber</p>
+            </div>
         </div>
         <div id="settings" class="show" align="center">
             <div class="settings">

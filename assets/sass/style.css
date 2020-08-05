@@ -15,6 +15,7 @@ pre{
 .inputblock{
     margin-left: 5%;
     margin-right: 5%;
+    margin-bottom: 3%;
     display: inline-block;
     caret-color: white;
 }
@@ -33,6 +34,13 @@ input{
     background: transparent;
     border-bottom: 1px solid #fcc;
     color: #ecec13;
+}
+
+.downloadBtn
+{
+    display: inline-block;
+    background: #5dc3d0;
+    color: rgb(82, 142, 150);
 }
 
 .btn{

@@ -17,11 +17,23 @@ cavityface = getFacecolor(cavitycolor);
 copperface = getFacecolor(coppercolor);
 
 
-var f, pw, pl, fl, fw, ch, tl, tfp, bfp, gl, gw, ele_l, effl, effd, dispMap;
+var f, pw, pl, fl, fw, ch, tl, tfp, bfp, gl, gw, ele_l, effl, effd, dispMap, fringing_l, gerber_content;
+
+var inset_l, gap_w
 
 
 function getConductorElement(){
     return document.getElementById("selectConductor");
+}
+
+function show_gerbs()
+{
+    var ids = ['gerb_1', 'gerb_2']
+    for (id in ids)
+    {
+        id = ids[id]
+        document.getElementById(id).style.display = 'block'
+    }
 }
 
 function beReady(){
@@ -59,6 +71,11 @@ function showInfo()
 }
 
 
+function mm_to_inch(val)
+{
+    return (39.3701 * val)/1000
+}
+
 function updateParams() {
     tl = pl + fl
     tfp = (pw / 2) + (fw / 2)
@@ -78,6 +95,13 @@ function updateParams() {
         var val = dispMap[key]
         setValue( key, val.join([separator = ':  ']))
     }
+    fl_i = mm_to_inch(fl)
+    fw_i = mm_to_inch(fw)
+    pl_i = mm_to_inch(pl)
+    pw_i = mm_to_inch(pw)
+    fringing_l_i = mm_to_inch(fringing_l)
+    gerber_content = get_normal_feed_gerber(fl_i, fw_i, pl_i, pw_i, fringing_l_i)
+    show_gerbs()
 }
 
 
@@ -118,11 +142,11 @@ function calculate(){
 
     var r = w/ h
 
-    var dell = (0.412*h)*(( effd + 0.3)/(effd-0.264))*((r+0.258)/(r+0.8))
+    var dell = (0.412*h)*(( effd + 0.3)/(effd-0.258))*((r+0.264)/(r+0.8))
 
     var feed_l = (ls/(4*f))*(Math.sqrt(1/(effd)))
 
-    var feed_w = (2*w)/5
+    var feed_w = w / 5
 
     var patch_l = effl - (2 * dell)
 
@@ -138,6 +162,7 @@ function calculate(){
     pw = w * Math.pow(10, 3)
     fl = feed_l * Math.pow(10, 3)
     fw = feed_w * Math.pow(10, 3)
+    fringing_l = 6 * h
     updateParams()
     //simSuccess()
     return true;
@@ -282,6 +307,44 @@ function makeDisplayId (id, disType)
 {
     document.getElementById (id).style.display = disType;
 }
+
+
+function download() {
+  var element = document.createElement('a');
+  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(gerber_content));
+  element.setAttribute('download', 'design.gbr');
+  element.style.display = 'none';
+  document.body.appendChild(element);
+  element.click();
+  document.body.removeChild(element);
+}
+
+
+function get_normal_feed_gerber(fl, fw, pl, pw, fringing_l){
+    init_x = ((fl/2) + fringing_l).toFixed(4).toString().replace('.', '')
+    init_y = fringing_l.toFixed(4).toString().replace('.', '')
+    patch_x = (fl + fringing_l + (pl/2)).toFixed(4).toString().replace('.', '')
+    gerber_format = ["G04 ===== Begin FILE IDENTIFICATION =====*",
+    "G04 File Format:  Gerber RS274X*",
+    "G04 ===== End FILE IDENTIFICATION =====*",
+    "%FSLAX24Y24*%",
+    "%MOIN*%",
+    "%SFA1.0000B1.0000*%",
+    "%OFA0.0B0.0*%",
+    "%ADD14R," + fl + "X" + fw + "*%",
+    "%ADD15R," + pl + "X" + pw + "*%",
+    "%LNcond*%",
+    "%IPPOS*%",
+    "%LPD*%",
+    "G75*",
+    "D14*",
+    "X" + init_x + "Y" + init_y + "D03*",
+    "D15*",
+    "X" + patch_x + "*",
+    "M02*"]
+    return gerber_format.join("\n")
+}
+
 
 // Google Analytics
 (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
