@@ -18,3 +18,14 @@ This repo may contains,
 
 - A front end with (javascript) for Antenna design and simulation.
 - Antenna related Python resources
+
+
+##### development in progress
+
+- Inset feed design and gerber facility.
+
+
+## Python package
+
+Patch antenna design and gerber file generation for both inset feed and normal feed is available in : [patch-antenna](https://pypi.org/project/patch-antenna/)
+python package.
