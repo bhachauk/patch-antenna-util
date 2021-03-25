@@ -25,7 +25,7 @@ The detailed information about this repo  published as blog post : [Design A Rec
 
 ## Misc parameters
 
-Refer **design_patch.py** for other parameter calculations.q
+Refer **design_patch.py** for other parameter calculations.
 
 #### Don't forget to add this to your PYTHONPATH
 
