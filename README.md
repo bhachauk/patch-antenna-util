@@ -2,7 +2,9 @@
 
 > A try to express enthusiasm on Antenna Design and Electro Magnetics
 
-![demo](/resource/anim.gif)  
+[![status](https://img.shields.io/badge/webapp-live-green?style=for-the-badge&logo=appveyor)](https://bhanuchander210.github.io/patch-antenna-util)
+
+[![demo](/resource/anim.gif)](https://bhanuchander210.github.io/patch-antenna-util)
 
 
 
@@ -38,4 +40,4 @@ export PYTHONPATH=$PYTHONPATH:/path/to/patch_util
 
 ##### development in progress
 
-- Inset feed design, 3D simulation and Gerber facility in Live application.
+- Array antenna with custom configurations facility
