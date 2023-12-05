@@ -2,9 +2,9 @@
 
 > A try to express enthusiasm on Antenna Design and Electro Magnetics
 
-[![status](https://img.shields.io/badge/webapp-live-green?style=for-the-badge&logo=appveyor)](https://bhanuchander210.github.io/patch-antenna-util)
+[![status](https://img.shields.io/badge/webapp-live-green?style=for-the-badge&logo=appveyor)](https://bhachauk.github.io/patch-antenna-util)
 
-[![demo](/resource/anim.gif)](https://bhanuchander210.github.io/patch-antenna-util)
+[![demo](/resource/anim.gif)](https://bhachauk.github.io/patch-antenna-util)
 
 
 
@@ -22,7 +22,7 @@ python package.
 
 ## Post
 
-The detailed information about this repo  published as blog post : [Design A Rectangular Patch Antenna Using Python](https://bhanuchander210.github.io/Design-A-Rectangular-Patch-Antenna-Using-Python/)
+The detailed information about this repo  published as blog post : [Design A Rectangular Patch Antenna Using Python](https://bhachauk.github.io/Design-A-Rectangular-Patch-Antenna-Using-Python/)
 
 
 ## Misc parameters
